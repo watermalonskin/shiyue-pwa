@@ -28,6 +28,8 @@ python -m http.server 4173 --directory read-later-pwa
 
 ## GitHub Pages
 
-工作流 `.github/workflows/deploy-pwa.yml` 会把 `read-later-pwa/` 发布到 GitHub Pages。首次启用时，请在仓库 Settings → Pages 中将 Build and deployment 的 Source 设为 GitHub Actions。发布成功后，项目站点地址为：
+为避免公开 Android/iOS 源码，PWA 使用独立公开仓库 `watermalonskin/shiyue-pwa`。该仓库根目录的 `.github/workflows/deploy-pwa.yml` 会自动发布网站。首次启用时，请在新仓库 Settings → Pages 中将 Build and deployment 的 Source 设为 GitHub Actions。
 
-`https://watermalonskin.github.io/shiyue-android/`
+发布成功后，朋友可通过以下地址打开：
+
+`https://watermalonskin.github.io/shiyue-pwa/`
