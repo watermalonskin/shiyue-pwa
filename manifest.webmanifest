@@ -1,0 +1,22 @@
+{
+  "id": "./",
+  "name": "拾阅 · 稍后再读",
+  "short_name": "拾阅",
+  "description": "把网页收好，留给有空的时候再读。",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait",
+  "theme_color": "#f6f5f0",
+  "background_color": "#f6f5f0",
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

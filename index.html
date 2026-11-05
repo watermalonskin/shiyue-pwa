@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f6f5f0" />
+    <meta name="color-scheme" content="light" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="description" content="把网页收好，留给有空的时候再读。" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href="./icons/icon.svg" />
+    <title>拾阅 · 稍后再读</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="拾阅首页">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 40 40" focusable="false">
+              <path d="M12 8.5h15.5A2.5 2.5 0 0 1 30 11v20.5l-9.8-5.6-9.7 5.6V11A2.5 2.5 0 0 1 13 8.5" />
+              <path d="M14.5 14h11M14.5 18.5h11" />
+            </svg>
+          </span>
+          <span class="brand-copy"><strong>拾阅</strong><small>把好内容留给以后</small></span>
+        </a>
+        <span class="local-pill"><span class="local-dot"></span>仅保存在此设备</span>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="welcome-title">
+          <div class="intro-copy">
+            <p class="eyebrow">YOUR QUIET READING SPACE</p>
+            <h1 id="welcome-title">看到好内容，<br /><span>先收好。</span></h1>
+            <p class="intro-description">把网页放在这里，等有空的时候再慢慢读。</p>
+          </div>
+          <button class="button button-primary add-top" type="button" data-open-add>
+            <span class="plus-sign" aria-hidden="true">＋</span>
+            添加链接
+          </button>
+          <div class="intro-art" aria-hidden="true">
+            <span class="art-orbit orbit-one"></span>
+            <span class="art-orbit orbit-two"></span>
+            <span class="art-card"><span></span><span></span><span></span><b>阅</b></span>
+          </div>
+        </section>
+
+        <section class="library" aria-labelledby="library-title">
+          <div class="library-heading">
+            <div>
+              <p class="section-kicker">YOUR LIBRARY</p>
+              <h2 id="library-title">阅读清单</h2>
+            </div>
+            <div class="stats" aria-live="polite">
+              <span><strong id="total-count">0</strong> 条收藏</span>
+              <span class="stats-divider" aria-hidden="true"></span>
+              <span><strong id="unread-count">0</strong> 条待读</span>
+            </div>
+          </div>
+
+          <label class="search-box" for="search-input">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.1 4.1"></path></svg>
+            <input id="search-input" type="search" placeholder="搜索标题、来源或网址" autocomplete="off" />
+            <kbd>/</kbd>
+          </label>
+
+          <div class="list-toolbar">
+            <div class="filter-tabs" role="group" aria-label="筛选收藏">
+              <button class="filter-tab is-active" type="button" data-filter="all" aria-pressed="true">全部 <span id="all-tab-count">0</span></button>
+              <button class="filter-tab" type="button" data-filter="unread" aria-pressed="false">待读</button>
+              <button class="filter-tab" type="button" data-filter="read" aria-pressed="false">已读</button>
+            </div>
+            <span class="sort-label">按收藏时间排序 <span aria-hidden="true">↓</span></span>
+          </div>
+
+          <div id="item-list" class="item-list" aria-live="polite" aria-busy="false"></div>
+
+          <section id="empty-state" class="empty-state" hidden>
+            <span class="empty-illustration" aria-hidden="true">
+              <svg viewBox="0 0 88 88" focusable="false">
+                <path d="M25 18h39a5 5 0 0 1 5 5v47l-24.5-14L20 70V23a5 5 0 0 1 5-5Z" />
+                <path d="M32 31h25M32 39h25M32 47h17" />
+                <circle cx="65" cy="23" r="9" />
+                <path d="M65 19v8M61 23h8" />
+              </svg>
+            </span>
+            <h3 id="empty-title">这里还空着</h3>
+            <p id="empty-description">把刚看到的网页链接收进来，回头再读。</p>
+            <button id="empty-add" class="button button-primary" type="button" data-open-add>收下第一条</button>
+          </section>
+        </section>
+
+        <aside class="install-note" aria-label="安装提示">
+          <span class="install-note-icon" aria-hidden="true">⌂</span>
+          <p><strong>放到手机桌面，随时回来</strong><span>iPhone 请在 Safari 打开，点“分享”后选择“添加到主屏幕”。</span></p>
+          <span class="install-note-arrow" aria-hidden="true">↗</span>
+        </aside>
+      </main>
+
+      <footer class="footer">
+        <span>拾阅 · 给好内容一个安静的去处</span>
+        <span>收藏仅保存在当前浏览器</span>
+      </footer>
+    </div>
+
+    <dialog id="add-dialog" class="add-dialog" aria-labelledby="dialog-title">
+      <form id="add-form" method="dialog" novalidate>
+        <div class="dialog-heading">
+          <div><p class="section-kicker">SAVE FOR LATER</p><h2 id="dialog-title">收下一条好内容</h2></div>
+          <button class="icon-button close-dialog" type="button" data-close-add aria-label="关闭">×</button>
+        </div>
+        <label class="field-label" for="url-input">网页链接 <span>必填</span></label>
+        <input id="url-input" class="text-field" type="url" inputmode="url" placeholder="粘贴文章或视频链接" autocomplete="url" required />
+        <p class="field-hint">目前支持保存网页地址，不会读取网页正文。</p>
+        <label class="field-label title-field-label" for="title-input">标题 <span>选填</span></label>
+        <input id="title-input" class="text-field" type="text" placeholder="留空时使用网站名称" maxlength="200" autocomplete="off" />
+        <div id="source-preview" class="source-preview" hidden><span class="source-preview-dot"></span><span id="source-label"></span><span>将识别为内容来源</span></div>
+        <p id="form-error" class="form-error" role="alert" hidden></p>
+        <div class="dialog-actions">
+          <button class="button button-quiet" type="button" data-close-add>取消</button>
+          <button class="button button-primary" type="submit">保存到清单 <span aria-hidden="true">→</span></button>
+        </div>
+      </form>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
